@@ -37,6 +37,9 @@ class User(UserMixin, db.Model):
         self.birthday = registration_form.birthday.data
         self.current_location = registration_form.current_location.data
 
+    def get_name(self):
+        return f"{self.name} {self.surname}".title()
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
