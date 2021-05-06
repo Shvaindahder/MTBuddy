@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateField, RadioField, SelectField
 
 
 class LoginForm(FlaskForm):
@@ -15,10 +15,10 @@ class RegistrationForm(FlaskForm):
     password = PasswordField("Password", id="registration__password")
     confirm_password = PasswordField("Check Password", id="registration__check-password")
 
-    name 
-    surname
-    burthday
-    gender
-    current_location
-    skill_level
+    name = StringField("Name", id="registration__name")
+    surname = StringField("Surname", id="registration__surname")
+    burthday = DateField("Burthday", id="registration__burthday")
+    gender = RadioField("Gender", choices=["Male", "Female"], id="registration__gender")
+    current_location = StringField("Current Location", id="registration__current-location")
+    skill_level = SelectField("Skill Level", choices=list(range(1, 6)), id="registration__skill-level")
 
