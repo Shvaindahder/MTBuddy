@@ -42,20 +42,9 @@ def auth_page():
     return render_template("auth_page.html", context)
 
 
-
-@bp.route("/login", methods=["GET", "POST"])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for("main.index"))
-    form = LoginForm()
-
-    if form.validate_on_submit()
-    pass
-
-
-@bp.route("/registration", methods=["GET", "POST"])
-def registration():
-    pass
-
+@bp.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("auth.auth_page"))
 
 
