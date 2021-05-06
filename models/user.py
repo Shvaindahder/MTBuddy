@@ -2,7 +2,7 @@ from typing import Optional
 from flask_login.mixins import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app import db
+from app import db, login
 from app.auth.forms import RegistrationForm
 
 
@@ -48,4 +48,10 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return f"<User {self.username}>"
+
+
+@login.user_loader
+def load_user():
+    return User.query.get(int(id))
+
     
