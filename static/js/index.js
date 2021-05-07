@@ -39,6 +39,9 @@ logClose.addEventListener('click', () => {
 content.addEventListener('click', e => {
   e.stopPropagation()
 })
+logContent.addEventListener('click', (e) => {
+  e.stopPropagation()
+})
 
 popupBody.addEventListener('click', () => {
   popup.classList.remove('open')
@@ -54,4 +57,8 @@ logPopupBody.addEventListener('click', () => {
 //   popup.classList.toggle('open')
 //   content.classList.toggle('content__open')
 // })
+
+
+
+// JOIN JS
 
