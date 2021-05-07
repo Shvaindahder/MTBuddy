@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db, login
 from app.auth.forms import RegistrationForm
+from models.meeting import Meeting
 
 
 class User(UserMixin, db.Model):
@@ -15,11 +16,12 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(128), index=True, unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
 
-    gender = db.Column(db.Boolean)
+    avatar = db.Column(db.String(128), nullable=True)
+    gender = db.Column(db.String(6))
     birthday = db.Column(db.DateTime, nullable=True)
     current_location = db.Column(db.String(256))
 
-    avatar = db.Column(db.String(128), nullable=True)
+    meetings = db.relationship(Meeting, backref="creator")
 
     def __init__(self, form=Optional[RegistrationForm], *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -28,7 +30,7 @@ class User(UserMixin, db.Model):
 
     def __fill_from_form(self, registration_form: RegistrationForm):
         self.name = registration_form.name.data
-        self.surname = registration_form.name.data
+        self.surname = registration_form.suremname.data
 
         self.username = registration_form.username.data
         self.email = registration_form.email.data
@@ -51,7 +53,7 @@ class User(UserMixin, db.Model):
 
 
 @login.user_loader
-def load_user():
+def load_user(id):
     return User.query.get(int(id))
 
     
