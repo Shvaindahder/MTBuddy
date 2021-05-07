@@ -20,14 +20,14 @@
     
             <div class="header__list">
                 <ul>
-                <li><a href="">About us</a></li>
+                <li><a href="{{ url_for('main.about_us') }}">About us</a></li>
                 {% if not current_user.is_authenticated %}
                         <li class="header__sign"><a href="">Sign up</a></li>
                         <li class="header__log"><a href="">Log in</a></li>
                 {% else %}
                         <li><a href="">Rent a bike</a></li>
                         <li><a href="">Profile settings</a></li>
-                        <li><a href="">Logout</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                 {% endif %}
                 </ul>
             </div>
@@ -40,7 +40,142 @@
       {% endblock %}
     </main>
   </div>
-    
-  <script src="index.js"></script>
+
+{% if not current_user.is_authenticated %}
+<div id="popup" class="sign-in__popup">
+  <div class="popup__body">
+    <div class="popup__content">
+      <a class="popup__close">x</a>
+      <!-- <div class="popup__title">popup blablabla</div> -->
+      <!-- <div class="popup__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem corporis architecto voluptate magni dolore nam hic obcaecati dolorum dolores vero.</div> -->
+      <div class="auth-form" id="registration-form">
+          <form action="{{ url_for('auth.registration') }}" method="post" id="registration">
+              {{ registration_form.hidden_tag() }}
+              <div class="registration__field">
+                  {{ registration_form.username.label }}
+                  {{ registration_form.username }}
+                  {% for error in registration_form.username.errors %}
+                      <span style="color: red;">[{{ error }}]</span>
+                  {% endfor %}
+              </div>
+              <div class="registration__field">
+                {{ registration_form.email.label }}
+                {{ registration_form.email }}
+                {% for error in registration_form.email.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+              <div class="registration__field">
+                {{ registration_form.password.label }}
+                {{ registration_form.password }}
+                {% for error in registration_form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+              <div class="registration__field">
+                {{ registration_form.confirm_password.label }}
+                {{ registration_form.confirm_password }}
+                {% for error in registration_form.confirm_password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+              <div class="registration__field">
+                {{ registration_form.name.label }}
+                {{ registration_form.name }}
+                {% for error in registration_form.name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+              <div class="registration__field">
+                {{ registration_form.surname.label }}
+                {{ registration_form.surname }}
+                {% for error in registration_form.surname.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+              <div class="registration__field">
+                {{ registration_form.birthday.label }}
+                {{ registration_form.birthday }}
+                {% for error in registration_form.birthday.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+              <div class="registration__field">
+                {{ registration_form.gender.label }}
+                {{ registration_form.gender }}
+                {% for error in registration_form.gender.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+              <div class="registration__field">
+                {{ registration_form.current_location.label }}
+                {{ registration_form.current_location }}
+                {% for error in registration_form.current_location.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+              <div class="registration__field">
+                {{ registration_form.skill_level.label }}
+                {{ registration_form.skill_level }}
+                {% for error in registration_form.skill_level.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+              </div>
+              <div class="registration__field">
+                  {{ registration_form.submit() }}
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SECOND POPUP -->
+<div class="log-in__popup">
+  <div class="log__popup__body">
+    <div class="log__popup__content">
+      <a class="log__popup__close">x</a>
+      <!-- <div class="log__popup__title">Login</div> -->
+      <!-- <div class="log__popup__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem corporis architecto voluptate magni dolore nam hic obcaecati dolorum dolores vero.</div> -->
+
+      <div id="login-form" class="auth-form">
+        <form action="{{ url_for('auth.login') }}" method="post" id="login">
+            {{ login_form.hidden_tag() }}
+            <!-- {% for field in login_form %}
+                {% if field.id != "csrf_token"%}
+                    <div class="login__field">
+                        {{ field.label }}
+                        {{ field }}
+                    </div>
+                {% endif %}
+            {% endfor %} -->
+            <div class="login__field">
+                {{ login_form.email.label }}
+                {{ login_form.email }}
+                {% for error in login_form.email.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="login__field">
+                {{ login_form.password.label }}
+                {{ login_form.password }}
+                {% for error in login_form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="login__field">
+                {{ login_form.remember_me() }}{{ login_form.remember_me.label }}
+            </div>
+            <div class="login__field">
+                {{ login_form.forgot() }}
+                {{ login_form.submit() }}
+            </div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
