@@ -17,11 +17,11 @@ class User(UserMixin, db.Model):
 
     gender = db.Column(db.Boolean)
     birthday = db.Column(db.DateTime, nullable=True)
-    current_location = db.Column()
+    current_location = db.Column(db.String(256))
 
     avatar = db.Column(db.String(128), nullable=True)
 
-    def __init__(self, form=Optional[RegistrationForm] = None, *args, **kwargs):
+    def __init__(self, form=Optional[RegistrationForm], *args, **kwargs):
         super().__init__(*args, **kwargs)
         if form != None:
             self.__fill_from_form(form)
