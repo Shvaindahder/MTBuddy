@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateField, RadioField, SelectField
-from wtforms.validators import DataRequired, EqualTo, 
+from wtforms.validators import DataRequired, EqualTo 
 
 
 class LoginForm(FlaskForm):
@@ -19,8 +19,10 @@ class RegistrationForm(FlaskForm):
 
     name = StringField("Name", id="registration__name", validators=[DataRequired()])
     surname = StringField("Surname", id="registration__surname", validators=[DataRequired()])
-    burthday = DateField("Burthday", id="registration__burthday", validators=[DataRequired()])
+    birthday = DateField("Burthday", id="registration__burthday", validators=[DataRequired()])
     gender = RadioField("Gender", choices=["Male", "Female"], id="registration__gender")
     current_location = StringField("Current Location", id="registration__current-location")
     skill_level = SelectField("Skill Level", choices=list(range(1, 6)), id="registration__skill-level")
+
+    submit = SubmitField("Submit", id="registration__submit")
 
