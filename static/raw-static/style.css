@@ -1,0 +1,117 @@
+@import 'normalize.css';
+
+body {
+  background: url('../img/ujhs.jpg') no-repeat center center fixed;;
+  /* background-repeat: no-repeat; */
+  font-family: 'Poppins', sans-serif;
+  background-size: cover;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 30px;
+  /* background-color: beige; */
+}
+a {
+  text-decoration: none;
+}
+
+header {
+  
+  border-bottom: 1px solid #000;
+}
+
+.header__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  font-size: 40px;
+  
+}
+/* .header__list {
+  display: flex;
+  
+} */
+
+.header__list ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__list ul li {
+  margin-right: 15px;
+  padding: 10px;
+  border: 1px solid black;
+  transition: all .4s;
+  border-radius: 10px;
+}
+.header__list ul li:hover {
+  background-color: rgb(0, 162, 255)
+}
+
+.header__list ul li:last-child {
+  margin-right: 0;
+}
+
+.sign-in__popup, .log-in__popup {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0; 
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: all .4s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+.popup__body, .log__popup__body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
+}
+
+.popup__content, .log__popup__content {
+  background-color: #fff;
+  color: #000;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 10px;
+  position:relative;
+  opacity: 0;
+  transition: all .7s;
+  transform: translate(0, -100%);
+}
+
+.content__open {
+  opacity: 1;
+  transform: translate(0px ,0px);
+}
+
+.popup__title, .log__popup__title {
+  font-size: 40px;
+  margin-bottom: 1em;
+}
+
+.popup__close, .log__popup__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px;
+  cursor: pointer;
+}
