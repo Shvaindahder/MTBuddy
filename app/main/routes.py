@@ -22,9 +22,14 @@ def profile():
 
 
 @login_required
-@bp.route("/login-settings")
+@bp.route("/profile-settings")
 def profile_settings():
     form = ProfileSettingsForm()
     if form.validate_on_submit():
         print(form)
         return redirect("main.profile_settings")
+    context = {
+        "title": "Profile Settings",
+        "form" : form
+    }
+    return render_template("main/profile_settings.html", **context)
