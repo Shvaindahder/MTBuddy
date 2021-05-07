@@ -1,0 +1,197 @@
+::placeholder {
+  font-size: 15px;
+  
+}
+
+.join__search-block {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.join__search {
+  justify-content: space-between;
+}
+.join__search span{
+  font-size: 20px;
+}
+
+.join__search input, button, select {
+  max-width: 110px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin: 0 10px;
+}
+.select-css { 
+  outline: none;
+  font-size: 16px; 
+
+
+  color: #444; 
+  padding: .6em 1.4em .5em .8em;
+  max-width: 130px; 
+  box-sizing: border-box; 
+  margin: 0; 
+  border: 1px solid #aaa;
+   box-shadow: 0 1px 0 1px rgba(0,0,0,.04); 
+  border-radius: .5em;
+   -moz-appearance: none;
+   -webkit-appearance: none;
+   appearance: none;
+   background-color: #fff; 
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); 
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%; 
+  } 
+   .select-css::-ms-expand { display: none; } 
+   .select-css:hover { border-color: #888; } 
+   .select-css:focus { border-color: #aaa; 
+   box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+   box-shadow: 0 0 0 3px -moz-mac-focusring; 
+  color: #222;
+   outline: none; 
+  } 
+   .select-css option { font-weight:normal; } 
+   *[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css { 
+  background-position: left .7em top 50%, 0 0; 
+  padding: .6em .8em .5em 1.4em; 
+  }
+button {
+  cursor: pointer;
+  transition: all .1s;
+  
+}
+button:hover {
+  background-color: rgb(59, 126, 202);
+  color: #fff;
+}
+
+.join__search input:last-child {
+  margin: 0;
+}
+
+.join__results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+}
+.join__card {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(120, 206, 221);
+  margin-bottom: 20px;
+}
+.join__card:last-child {
+  margin-bottom: 0;
+}
+.join__desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.join__desc span {
+  margin-bottom: 10px;
+  font-size: 20px;
+
+}
+.join__desc span:last-child {
+  margin-bottom: 0;
+}
+.join__creator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.join__person {
+  display: flex;
+  align-items: center;
+  
+  
+}
+
+.join__creator-head {
+  display: flex;
+  flex-direction: column;
+  
+}
+.join__img {
+  max-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: 10px;
+  cursor: pointer;
+}
+/* .join__img img:hover {
+
+  object-fit: fill;
+  object-position: center;
+} */
+.join__img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+
+  object-fit: cover;
+}
+.join__creator-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.join__creator-body div {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .3s;
+  font-size: 14px;
+  color: #444;
+  font-weight: 700;
+}
+
+.join__creator-body div:hover {
+  background-color: rgb(59, 126, 202);
+  color: #fff;
+}
+
+
+.create {
+
+}
+.create__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #444;
+  font-weight: 700;
+  padding: 20px 0;
+  transition: all .1s;
+  cursor: pointer;
+}
+.create__row div {
+  padding: 15px 10px;
+}
+
+.create__row div:hover {
+  background-color:rgb(59, 126, 202);
+  color: #fff;
+}
+.create__back, .create__meeting {
+  background-color: #fff;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+@media screen (max-width: 700px) {
+  
+}
