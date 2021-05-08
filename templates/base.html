@@ -56,7 +56,7 @@
       <!-- <div class="popup__title">popup blablabla</div> -->
       <!-- <div class="popup__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem corporis architecto voluptate magni dolore nam hic obcaecati dolorum dolores vero.</div> -->
       <div class="auth-form" id="registration-form">
-          <form action="{{ url_for('auth.registration') }}" method="post" id="registration">
+          <form action="{{ url_for('auth.registration') }}" method="post" id="registration" enctype="multipart/form-data">
               {{ registration_form.hidden_tag() }}
               
               <div class="registration__field first-field" data-title='Avatar'>
@@ -154,7 +154,7 @@
       <!-- <div class="log__popup__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem corporis architecto voluptate magni dolore nam hic obcaecati dolorum dolores vero.</div> -->
 
       <div id="login-form" class="auth-form">
-        <form action="{{ url_for('auth.login') }}" method="post" id="login">
+        <form action="{{ url_for('auth.login') }}" method="post" id="login" enctype="multipart/form-data">
             {{ login_form.hidden_tag() }}
             <!-- {% for field in login_form %}
                 {% if field.id != "csrf_token"%}

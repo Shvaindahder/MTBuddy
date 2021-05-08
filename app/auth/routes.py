@@ -2,6 +2,7 @@ from flask import redirect, url_for, request, render_template
 from flask_login import login_user, logout_user, current_user, login_required
 
 from app import db
+from app.utils import load_media
 from app.auth import bp
 from app.auth.forms import LoginForm, RegistrationForm
 from models.user import User
@@ -64,10 +65,12 @@ def auth_page():
 def registration():
     form = RegistrationForm()
     print("REGISTRATION FORM VALIDATES ON SUBMIT")
-    # if form.validate_on_submit():
         
     user = User(form)
     user.set_password(form.password.data)
+    filename = load_media(form.avatar.data)
+    user.avatar = filename
+
     db.session.add(user)
     db.session.commit()
     print("New data")
