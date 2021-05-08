@@ -163,10 +163,6 @@ button:hover {
   color: #fff;
 }
 
-
-.create {
-
-}
 .create__row {
   display: flex;
   justify-content: space-between;
@@ -190,8 +186,4 @@ button:hover {
   padding: 10px;
   font-size: 15px;
   border-radius: 10px;
-}
-
-@media screen (max-width: 700px) {
-  
 }
