@@ -83,12 +83,16 @@ def login():
     user = User.query.filter_by(email=form.email.data).first()
     if user is None:
         return redirect(url_for("auth.auth_page"))
-    login_user(user)
-    next_page = request.args.get("next")
+    if user.check_password(form.password.data):
+        print("Password is correct")
+        login_user(user)
+        next_page = request.args.get("next")
 
-    if not next_page:
-        next_page = url_for("main.profile")
-    return redirect(next_page)
+        if not next_page:
+            next_page = url_for("main.profile")
+        return redirect(next_page)
+    print("Password isn't correct")
+    return redirect(url_for("auth.auth_page"))
 
 
 @login_required

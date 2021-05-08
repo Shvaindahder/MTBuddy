@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, EqualTo, Email
 
 
 class ProfileSettingsForm(FlaskForm):
-    avatar = FileField("Profile Image", id="profile-settings__avatar", validators=[FileAllowed(["jpg", "png"], "Images only")])
+    avatar = FileField("avatar", id="profile-settings__avatar", validators=[FileAllowed(["jpg", "png"], "Images only")])
     skill_level = SelectField("Skill Level", choices=list(range(0, 6)))
 
     username = StringField("Change username", id="profile-settings__username")
