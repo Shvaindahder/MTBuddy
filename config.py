@@ -12,5 +12,5 @@ class Config:
     TEMPLATES_FOLDER = os.path.join(BASEDIR, "templates") 
     STATICFILES_FOLDER = os.path.join(BASEDIR, "static")
     MEDIAFILES_FOLDER = os.path.join(BASEDIR, "media")
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URI") or f"sqlite:///{os.path.join(BASEDIR, 'app.db')}"
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URI") or f"sqlite:///{os.path.join(BASEDIR, 'data.db')}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False

@@ -1,5 +1,4 @@
 const header__sign = document.querySelector('.header__sign');
-const link = document.querySelectorAll('a');
 const popupBody = document.querySelector('.popup__body');
 const logPopupBody = document.querySelector('.log__popup__body');
 const log__popup__body = document.querySelector('.log__popup__body');
@@ -11,18 +10,14 @@ const logClose = document.querySelector('.log__popup__close');
 const content = document.querySelector('.popup__content');
 const logContent = document.querySelector('.log__popup__content');
 
-for(let i = 0; i < link.length; i++) {
-  link[i].addEventListener('click', (e) => {
-    e.preventDefault()
-  })
-}
+
 header_log.addEventListener('click', (e) => {
-  // e.preventDefault()
+  e.preventDefault()
   login__popup.classList.toggle('open')
   logContent.classList.toggle('content__open')
 })
 header__sign.addEventListener('click', (e) => {
-  // e.preventDefault()
+  e.preventDefault()
   popup.classList.toggle('open')
   content.classList.toggle('content__open')
 })

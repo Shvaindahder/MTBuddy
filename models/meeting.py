@@ -14,3 +14,10 @@ class Meeting(db.Model):
     title = db.Column(db.String(64), nullable=False)
     description = db.Column(db.Text)
     min_skill = db.Column(db.Integer, nullable=True, default=0)
+
+
+
+    participants = db.Table("participants",
+        db.Column("user_id", db.Integer, db.ForeignKey("user.id")),
+        db.Column("meet_id", db.Integer, db.ForeignKey("meeting.id"))
+    )

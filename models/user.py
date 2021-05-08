@@ -15,6 +15,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     email = db.Column(db.String(128), index=True, unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
+    skill_level = db.Column(db.Integer, nullable=False, default=1)
 
     avatar = db.Column(db.String(128), nullable=True)
     gender = db.Column(db.String(6))
@@ -30,7 +31,7 @@ class User(UserMixin, db.Model):
 
     def __fill_from_form(self, registration_form: RegistrationForm):
         self.name = registration_form.name.data
-        self.surname = registration_form.suremname.data
+        self.surname = registration_form.surname.data
 
         self.username = registration_form.username.data
         self.email = registration_form.email.data
