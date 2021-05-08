@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateField, RadioField, SelectField
 from wtforms.validators import DataRequired, EqualTo 
 
@@ -6,12 +7,14 @@ from wtforms.validators import DataRequired, EqualTo
 class LoginForm(FlaskForm):
     email = StringField("Email", id="login__email", validators=[DataRequired()])
     password = PasswordField("Password", id="login__password", validators=[DataRequired()])
-    remember_me = BooleanField("RememberMe", id="login__remember")
+    remember_me = BooleanField("Remember Me", id="login__remember")
     forgot = SubmitField("Forgot", id="login__forgot")
     submit = SubmitField("Submit", id="login__submit")
 
 
 class RegistrationForm(FlaskForm):
+    avatar = FileField("Profile Pic", id="registration__file", validators=[FileAllowed(["jpg", "png"], "Images only.")])
+
     username = StringField("Username", id="registration__username", validators=[DataRequired()])
     email = StringField("Email", id="registration__email", validators=[DataRequired()])
     password = PasswordField("Password", id="registration__password", validators=[DataRequired()])

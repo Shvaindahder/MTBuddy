@@ -11,6 +11,8 @@
   {% block css_links %}
 
   {% endblock %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+  
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -56,6 +58,15 @@
       <div class="auth-form" id="registration-form">
           <form action="{{ url_for('auth.registration') }}" method="post" id="registration">
               {{ registration_form.hidden_tag() }}
+              
+              <div class="registration__field first-field" data-title='Avatar'>
+                <div class="registration__img">
+                  <img class="registration__image" src="../static/img/ujhs.jpg" alt="" >
+                </div>
+                  <div id="none">
+                    {{ registration_form.avatar }}
+                  </div>
+              </div>
               <div class="registration__field">
                   {{ registration_form.username.label }}
                   {{ registration_form.username }}
@@ -183,5 +194,6 @@
 
 {% block scripts %}{% endblock %}
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 </body>
 </html>
