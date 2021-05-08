@@ -34,7 +34,7 @@ img.addEventListener('click', () => {
 function previewFile() {
 
   var file    = formInput.files[0];
-  var reader  = new FileReader();d
+  var reader  = new FileReader();
 
   reader.onloadend = function () {
     img.src = reader.result;
