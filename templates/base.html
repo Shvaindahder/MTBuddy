@@ -193,7 +193,9 @@
 {% endif %}
 
 {% block scripts %}{% endblock %}
+  {% if not current_user.is_authenticated %}
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
   <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+  {% endif %}
 </body>
 </html>

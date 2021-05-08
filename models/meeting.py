@@ -17,7 +17,7 @@ class Meeting(db.Model):
 
 
 
-    participants = db.Table("participants",
-        db.Column("user_id", db.Integer, db.ForeignKey("user.id")),
-        db.Column("meet_id", db.Integer, db.ForeignKey("meeting.id"))
-    )
+participants = db.Table("participants",
+    db.Column("user_id", db.Integer, db.ForeignKey("user.id")),
+    db.Column("meet_id", db.Integer, db.ForeignKey("meeting.id"))
+)

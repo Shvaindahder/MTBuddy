@@ -31,7 +31,15 @@
   let activities_btn = document.getElementById("profile__activities-btn");
 
   join_meeting_btn.onclick = () => {
-      loaction.href = '{{ url_for("meeting.join_meeting") }}'
+      location.href = '{{ url_for("meeting.join_meeting") }}';
+  }
+
+  create_meeting_btn.onclick = () => {
+      location.href = '{{ url_for("meeting.create_meeting") }}'
+  }
+
+  activities_btn.onclick = () => {
+      location.href = '{{ url_for("meeting.activities") }}'
   }
 </script>
 {% endblock %}
