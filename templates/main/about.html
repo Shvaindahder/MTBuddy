@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block css_links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<div class="about">
+    <div class="container">
+      <!-- <div class="about__block"> -->
+        <div class="about__cards">
+          <div class="about__card">
+            <div class="about__title">Who we are</div>
+            <div class="about__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit fugit quo ullam, doloremque nemo sit, maxime distinctio mollitia eaque dicta amet modi enim ducimus fuga tempora magni nulla suscipit? Asperiores.</div>
+          </div>
+          <div class="about__card">
+            <div class="about__title">Who we are</div>
+            <div class="about__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit fugit quo ullam, doloremque nemo sit, maxime distinctio mollitia eaque dicta amet modi enim ducimus fuga tempora magni nulla suscipit? Asperiores.</div>
+          </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

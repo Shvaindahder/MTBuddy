@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"> 
+  {% block css_links %}
+
+  {% endblock %}
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -15,7 +20,7 @@
         <div class="container">
             <div class="header__row">
             <div class="header__logo">
-                <a href="">LOGO</a>
+                <a href="{% if current_user.is_authenticated %} {{ url_for('main.profile') }} {% else %} {{ url_for('auth.auth_page') }} {% endif %}">LOGO</a>
             </div>
     
             <div class="header__list">
@@ -26,7 +31,7 @@
                         <li class="header__log"><a href="">Log in</a></li>
                 {% else %}
                         <li><a href="">Rent a bike</a></li>
-                        <li><a href="">Profile settings</a></li>
+                        <li><a href="{{ url_for('main.profile_settings') }}">Profile settings</a></li>
                         <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                 {% endif %}
                 </ul>
@@ -176,6 +181,7 @@
 </div>
 {% endif %}
 
+{% block scripts %}{% endblock %}
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

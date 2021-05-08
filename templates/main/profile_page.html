@@ -1,1 +1,37 @@
 {% extends "base.html" %}
+
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block css_links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="profile__block">
+      <div class="profile__title">
+        <h3>Welcome, {{ current_user.get_name() }}</h3>
+      </div>
+      <div class="profile__buttons">
+        <div class="profile__btn" id="profile__join-meeting-btn">Join a meeting</div>
+        <div class="profile__btn" id="profile__create-meeting-btn">Create a meeting</div>
+        <div class="profile__btn" id="profile__activities">Your activities</div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  let join_meeting_btn = document.getElementById("profile__join-meeting-btn");
+  let create_meeting_btn = document.getElementById("profile__create-meeting-btn");
+  let activities_btn = document.getElementById("profile__activities-btn");
+
+  join_meeting_btn.onclick = () => {
+      loaction.href = '{{ url_for("meeting.join_meeting") }}'
+  }
+</script>
+{% endblock %}
