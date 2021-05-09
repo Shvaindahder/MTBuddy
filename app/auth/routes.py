@@ -68,6 +68,7 @@ def registration():
         
     user = User(form)
     user.set_password(form.password.data)
+    print(form.avatar)
     filename = load_media(form.avatar.data)
     user.avatar = filename
 
