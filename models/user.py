@@ -22,9 +22,12 @@ class User(UserMixin, db.Model):
     birthday = db.Column(db.DateTime, nullable=True)
     current_location = db.Column(db.String(256))
 
-    meetings = db.relationship(Meeting, backref="creator")
+    meetings = db.relationship("Meeting", backref="creator")
+    participations = db.relationship(
+        "Meeting", secondary="participants", backref="participants"
+    )
 
-    def __init__(self, form=Optional[RegistrationForm], *args, **kwargs):
+    def __init__(self, form: Optional[RegistrationForm] = None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if form != None:
             self.__fill_from_form(form)
