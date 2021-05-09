@@ -18,7 +18,7 @@
       <div class="profile__buttons">
         <div class="profile__btn" id="profile__join-meeting-btn">Join a meeting</div>
         <div class="profile__btn" id="profile__create-meeting-btn">Create a meeting</div>
-        <div class="profile__btn" id="profile__activities">Your activities</div>
+        <div class="profile__btn" id="profile__activities-btn">Your activities</div>
       </div>
     </div>
 </div>
@@ -35,11 +35,11 @@
   }
 
   create_meeting_btn.onclick = () => {
-      location.href = '{{ url_for("meeting.create_meeting") }}'
+      location.href = '{{ url_for("meeting.create_meeting") }}';
   }
 
   activities_btn.onclick = () => {
-      location.href = '{{ url_for("meeting.activities") }}'
+      location.href = '{{ url_for("meeting.activities") }}';
   }
 </script>
 {% endblock %}
