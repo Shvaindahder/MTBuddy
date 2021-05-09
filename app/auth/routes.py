@@ -68,8 +68,9 @@ def registration():
         
     user = User(form)
     user.set_password(form.password.data)
-    filename = load_media(form.avatar.data)
-    user.avatar = filename
+    if form.avatar is not None:
+        filename = load_media(form.avatar.data)
+        user.avatar = filename
 
     db.session.add(user)
     db.session.commit()

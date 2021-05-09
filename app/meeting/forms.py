@@ -13,4 +13,3 @@ class CreateMeetingForm(FlaskForm):
     description = TextField("Add a description")
     min_skill = SelectField("Skill level required", choices=list(range(1, 6)))
     submit = SubmitField("Create your meeting!")
-

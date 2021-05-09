@@ -4,7 +4,7 @@ from config import BASEDIR
 
 
 def load_media(data):
-    media_folder = os.path.join(BASEDIR, 'media')
+    media_folder = os.path.join(BASEDIR, 'static/media')
 
     filename = secure_filename(data.filename)
     print(filename)
@@ -13,7 +13,7 @@ def load_media(data):
         media_folder = os.path.join(media_folder, "images")
     print(f"Loading file {os.path.join(media_folder, filename)}")
     data.save(os.path.join(media_folder, filename))
-    return os.path.join(media_folder, filename)
+    return os.path.join('media/images', filename)
     
     
     

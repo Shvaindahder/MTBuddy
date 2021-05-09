@@ -1,3 +1,4 @@
+from config import UPLOAD_FOLDER
 from flask import Blueprint
 from flask import redirect, url_for
 from flask_login import current_user

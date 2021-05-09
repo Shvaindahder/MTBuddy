@@ -37,6 +37,9 @@ def profile():
 @bp.route("/profile-settings", methods=["GET", "POST"])
 def profile_settings():
     form = ProfileSettingsForm()
+    print("Skill level: ", form.skill_level.__dict__)
+    form.username.data = current_user.username
+    form.email.data = current_user.email
     if form.validate_on_submit():
         if form.username.data:
             current_user.username = form.username.data
@@ -46,7 +49,6 @@ def profile_settings():
             current_user.set_password(form.password.data)
         current_user.skill_level = form.skill_level.data
         if form.avatar.data and form.avatar.data != current_user.avatar:
-            print(form.avatar.data.filename)
             filename = load_media(form.avatar.data)
             current_user.avatar = filename
         db.session.commit()
