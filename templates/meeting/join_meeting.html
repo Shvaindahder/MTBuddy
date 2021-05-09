@@ -15,7 +15,7 @@
                 <input  type="text" class="first-input"  placeholder="Area" />
                 <input type='date' class="second-input" placeholder="Date" />
           
-                <select class="select-css" name="skill level" id="">
+                <select class="select-css" name="skill level" id="third-input">
                     <option disabled>Skill level</option>
                     <option>1</option>
                     <option>2</option>
@@ -50,7 +50,10 @@
                 </div>
                 <div class="join__creator-body">
                     <div class="join__details">See details</div>
-                        <div class="join__join">Join</div>
+                        <div class="join__join" id="{{ meeting.id }}">Join</div>
+                        <div class="unique" >
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,4 +61,47 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block scripts %}
+<script>
+    const firstInput = document.querySelector('.first-input');
+    const secondInput = document.querySelector('.second-input');
+    const thirdInput = document.querySelector('#third-input');
+    const btn = document.getElementsByClassName('join__btn')[0];
+    
+    let link = `{{ url_for('meeting.join_meeting') }}`;
+
+    let args = []
+
+    btn.addEventListener('click', () => {
+
+        if(firstInput.value.trim() !== '') {
+            args.push(`area=${firstInput.value.trim()}`)
+        }
+        if(secondInput.value.trim() !== '') { 
+
+            args.push(`date=${secondInput.value.trim()}`)
+
+        }  
+        if(thirdInput.value.trim() !== '') { 
+
+            args.push(`skill=${thirdInput.value.trim()}`)
+        }   
+        let args_string = '';
+        if (args.length !== 0) {
+            args_string = '?' + args.join('&');
+        }
+        console.log(link + args_string);
+        args = [];
+        firstInput.value = ''
+        secondInput.value = ''
+        thirdInput.value = '1'
+
+    })
+</script>
+
+<script>
+    const unique = document.querySelector('.unique');
+    unique.innerHTML = '' +  new Date().toLocaleDateString.toString + ''
+</script>
 {% endblock %}
