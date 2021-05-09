@@ -20,7 +20,7 @@
                 Profile image: 
             </div>
             <div class="psf__img">
-                <img id="psf__image" src='/Users/vagyrshan/Desktop/MTBuddy/static/img/ujhs.jpg' alt="">
+                <img id="psf__image" src='{% if current_user.avatar %} {{ url_for("static", filename=current_user.avatar) }} {% else %} {{ url_for("static", filename="img/anon-user.png")}} {% endif %}'  alt="">
             </div>
             <div class="hide-input">
                 {{ form.avatar.label }}{{ form.avatar }}

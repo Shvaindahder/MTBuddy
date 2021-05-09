@@ -12,7 +12,7 @@ from app.utils import load_media
 def about_us():
     if current_user.is_authenticated:
         context = {
-            "title": "About US"
+            "title": "About us"
         }
     else:
         context = {
@@ -37,11 +37,10 @@ def profile():
 @bp.route("/profile-settings", methods=["GET", "POST"])
 def profile_settings():
     form = ProfileSettingsForm()
-    print("Skill level: ", form.skill_level.__dict__)
-    form.username.data = current_user.username
-    form.email.data = current_user.email
+
     if form.validate_on_submit():
         if form.username.data:
+            print(form.username.data)
             current_user.username = form.username.data
         if form.email.data:
             current_user.email = form.email.data
@@ -53,6 +52,11 @@ def profile_settings():
             current_user.avatar = filename
         db.session.commit()
         return redirect(url_for("main.profile_settings"))
+
+    form.username.data = current_user.username
+    form.email.data = current_user.email
+    form.skill_level.data = current_user.skill_level
+
     context = {
         "title": "Profile Settings",
         "form" : form

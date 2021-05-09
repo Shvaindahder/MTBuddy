@@ -26,6 +26,7 @@ def create_meeting():
             min_skill=form.min_skill.data
         )
         db.session.add(meeting)
+        current_user.participations.append(meeting)
         db.session.commit()
         return redirect(url_for("main.profile"))
 
@@ -85,7 +86,7 @@ def activities():
         "title": "Activities",
         "meetings": meetings
     }
-    return redirect(url_for("main.profile"))
+    return render_template("meeting/activities.html", **context)
 
 
 @login_required
@@ -105,11 +106,11 @@ def cancel_participition():
         )
     db.session.commit()
     return jsonify({"status": "success"})
-    
+
     
 
 
 @login_required
 @bp.route("bike-rent")
 def bike_rent():
-    pass
+    return render_template("meeting/bike_rent.html")

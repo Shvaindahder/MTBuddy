@@ -69,7 +69,8 @@ def registration():
     user = User(form)
     user.set_password(form.password.data)
     
-    if form.avatar is not None:
+    if form.avatar.data is not None:
+        print(form.avatar)
         filename = load_media(form.avatar.data)
         user.avatar = filename
 
