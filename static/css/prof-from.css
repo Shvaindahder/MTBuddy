@@ -12,7 +12,7 @@ form {
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: space-between;
   flex-direction: column;
-  margin-bottom: 200px;
+  margin-bottom: 50px;
 
 }
 
@@ -105,4 +105,21 @@ form {
   #profile-settings__submit:hover {
     background-color: rgb(54, 134, 209);
     color: #fff;
+  }
+
+  .psf__buttons-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .psf__buttons-block button {
+    padding: 10px;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid rgb(41, 39, 39)
+  }
+
+  .psd__container {
+    padding: 20px 0;
   }

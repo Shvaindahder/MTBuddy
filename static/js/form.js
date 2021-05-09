@@ -1,6 +1,7 @@
 const formImg = document.querySelector('.registration__img');
 const img = document.getElementsByClassName('registration__image')[0];
 const formInput = document.getElementById('registration__file');
+
 img.addEventListener('click', () => {
   console.log('click')
   formInput.click()
