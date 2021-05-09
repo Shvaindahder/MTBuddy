@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   {% block css_links %}
 
   {% endblock %}
@@ -19,10 +20,11 @@
     <!-- HEADER -->
     <div class="wrapper">
         <header>
-        <div class="container">
+        <div class="container header__container">
             <div class="header__row">
             <div class="header__logo">
-                <a href="{% if current_user.is_authenticated %} {{ url_for('main.profile') }} {% else %} {{ url_for('auth.auth_page') }} {% endif %}">LOGO</a>
+                <!-- <a href="{% if current_user.is_authenticated %} {{ url_for('main.profile') }} {% else %} {{ url_for('auth.auth_page') }} {% endif %}">LOGO</a> -->
+                <img src='{{url_for ("static", filename="img/logo.png")}}' alt="">
             </div>
     
             <div class="header__list">
@@ -46,6 +48,21 @@
 
       {% endblock %}
     </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__block">
+          <div class="footer__icons">
+
+            <a class="fa fa-facebook" href=""></a>
+            <a class="fa fa-twitter" href=""></a>
+            <a class="fa fa-github" href=""></a>
+          </div>
+          <div class="footer__text">
+            <span>Copyright © Your Website 2021</span>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
 {% if not current_user.is_authenticated %}
@@ -154,7 +171,7 @@
       <!-- <div class="log__popup__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem corporis architecto voluptate magni dolore nam hic obcaecati dolorum dolores vero.</div> -->
 
       <div id="login-form" class="auth-form">
-        <form action="{{ url_for('auth.login') }}" method="post" id="login" enctype="multipart/form-data">
+        <form action="{{ url_for('auth.login') }}" method="post" id="login">
             {{ login_form.hidden_tag() }}
             <!-- {% for field in login_form %}
                 {% if field.id != "csrf_token"%}

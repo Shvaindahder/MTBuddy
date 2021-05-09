@@ -2,70 +2,85 @@
 
 
 {% block title %} {{title}} {% endblock %}
+{% block css_links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/meeting-form.css') }}">
+  {% endblock %}
 
 {% block content %}
-<h3>Create a meeting</h3>
 
-<form method="post" id="create-meeting-form">
-    {{ form.hidden_tag() }}
-    <div class="cmf__field">
-        {{form.num_of_bikers.label}} 
-        {{form.num_of_bikers}}
-        {% for errors in form.num_of_bikers.errors %}
+<div class="container">
+    <div class="meeting__title">
+        <h3>Create a meeting</h3>
+    </div>
+    
+    <form method="post" id="create-meeting-form">
+        {{ form.hidden_tag() }}
+        <div class="cmf__field">
+            {{form.num_of_bikers.label}} 
+            <div class="limit-btn">no limit</div>
+            {{form.num_of_bikers(class_="select-css limit-int")}}
+
+            {% for error in form.num_of_bikers.errors %}
+                <span style="color: red">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="cmf__field">
+            {{form.area.label}} 
+            {{form.area}}
+            {% for error in form.area.errors %}
+                <span style="color: red">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="cmf__field">
+            {{form.trail.label}} 
+            {{form.trail}}
+            {% for error in form.trail.errors %}
+                <span style="color: red">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="cmf__field">
+            {{form.date.label}} 
+            {{form.date}}
+            {% for error in form.date.errors %}
             <span style="color: red">{{error}}</span>
-        {% endfor %}
-    </div>
-    <div class="cmf__field">
-        {{form.area.label}} 
-        {{form.area}}
-        {% for errors in form.area.errors %}
-            <span style="color: red">{{error}}</span>
-        {% endfor %}
-    </div>
-    <div class="cmf__field">
-        {{form.trail.label}} 
-        {{form.trail}}
-        {% for errors in form.trail.errors %}
-            <span style="color: red">{{error}}</span>
-        {% endfor %}
-    </div>
-    <div class="cmf__field">
-        {{form.date.label}} 
-        {{form.date}}
-        {% for errors in form.date.errors %}
-        {% endfor %}
-        <span style="color: red">{{error}}</span>
-    </div>
-    <div class="cmf__field">
-        {{form.time.label}} 
-        {{form.time}}
-        {% for errors in form.time.errors %}
-            <span style="color: red">{{error}}</span>
-        {% endfor %}
-    </div>
-    <div class="cmf__field">
-        {{form.title.label}} 
-        {{form.title}}
-        {% for errors in form.title.errors %}
-            <span style="color: red">{{error}}</span>
-        {% endfor %}
-    </div>
-    <div class="cmf__field">
-        {{form.description.label}} 
-        {{form.description}}
-        {% for errors in form.description.errors %}
-            <span style="color: red">{{error}}</span>
-        {% endfor %}
-    </div>
-    <div class="cmf__field">
-        {{form.min_skill.label}} 
-        {{form.min_skill}}
-        {% for errors in form.min_skill.errors %}
-            <span style="color: red">{{error}}</span>
-        {% endfor %}
-    </div>
-    <div class="cmf__field">
-        {{ form.submit() }}
-    </div>
-</form>
+            {% endfor %}
+            
+        </div>
+        <div class="cmf__field">
+            {{form.time.label}} 
+            {{form.time}}
+            {% for error in form.time.errors %}
+                <span style="color: red">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="cmf__field">
+            {{form.title.label}} 
+            {{form.title}}
+            {% for error in form.title.errors %}
+                <span style="color: red">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="cmf__field">
+            {{form.description.label}} 
+            {{form.description}}
+            {% for errors in form.description.errors %}
+                <span style="color: red">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="cmf__field">
+            {{form.min_skill.label}} 
+            {{form.min_skill}}
+            {% for error in form.min_skill.errors %}
+                <span style="color: red">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="cmf__field">
+            {{ form.submit() }}
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/limit.js') }}"></script>
 {% endblock %}
