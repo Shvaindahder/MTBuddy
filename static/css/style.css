@@ -1,9 +1,9 @@
 @import 'normalize.css';
 
 body {
-  background: url('../img/ujhs.jpg') no-repeat center center fixed;;
+  background: url('../img/mountain.png') no-repeat center center fixed;;
   /* background-repeat: no-repeat; */
-  
+  color: #fff;
   background-size: cover;
 }
 
@@ -15,21 +15,37 @@ body {
 }
 a {
   text-decoration: none;
+  color: #fff;
+}
+.wrapper {
+  overflow: hidden;
+  min-height: 100vh;
+  position: relative;
 }
 
 header {
-  
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid #000;
 }
 
+.header__container {
+  padding: 10px 30px;
+}
 .header__row {
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .header__logo {
-  font-size: 40px;
+  /* font-size: 40px; */
+  max-width: 150px;
+}
+.header__logo img {
+  width: 100%;
+  height: 100%;
   
 }
 /* .header__list {
@@ -49,10 +65,10 @@ header {
   padding: 10px;
   border: 1px solid black;
   transition: all .4s;
-  border-radius: 10px;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.1);
 }
 .header__list ul li:hover {
-  background-color: rgb(0, 162, 255)
+  background-color: rgb(46, 47, 48)
 }
 
 .header__list ul li:last-child {
@@ -91,7 +107,7 @@ header {
   color: #000;
   max-width: 500px;
   padding: 30px;
-  border-radius: 10px;
+
   position:relative;
   opacity: 0;
   transition: all .7s;
@@ -101,6 +117,14 @@ header {
 .content__open {
   opacity: 1;
   transform: translate(0px ,0px);
+}
+.content__text {
+  text-align: center;
+}
+.content__title {
+  font-size: 30px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .popup__title, .log__popup__title {
@@ -114,4 +138,58 @@ header {
   right: 10px;
   padding: 4px;
   cursor: pointer;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  
+  padding: 20px;
+  padding-bottom: 0;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+
+}
+.footer__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.footer__text {
+  margin-top: 20px;
+}
+.fa {
+  padding: 10px;
+  font-size: 10px;
+  width: 15px;
+  text-align: center;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.fa-facebook {
+  background-color: #1a1a1a;
+  color:#5f5f5f;
+
+  border-radius: 50%;
+
+}
+.fa:hover {
+  opacity: 0.7;
+
+}
+.fa-github {
+  background-color: #1a1a1a;
+  color:#5f5f5f;
+  border-radius: 50%;
+}
+
+/* Twitter */
+.fa-twitter {
+  background-color: #1a1a1a;
+  color:#5f5f5f;
+
+  border-radius: 50%;
 }

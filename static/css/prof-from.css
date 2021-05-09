@@ -5,9 +5,28 @@ form {
   margin-top: 50px;
   display: flex;
   max-width: 400px;
+  padding: 20px;
+
+  border: 1px solid rgb(32, 32, 32);
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   justify-content: space-between;
   flex-direction: column;
+  margin-bottom: 200px;
+
+}
+
+.psf__img {
+  max-width: 100px;
+
+}
+.psf__img img {
+  width: 50px;
+  height: 50px;
   
+}
+.hide-input {
+  display: none;
 }
 .psf__field {
   display: flex;

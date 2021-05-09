@@ -19,13 +19,20 @@ body {
   align-items: center;
   margin-bottom: 15px;
   padding: 10px;
-  background-color: rgb(228, 227, 231);
-  border-radius: 10px;
+  background-color: rgb(46, 46, 46);
+  border: 1px solid rgb(26, 25, 25);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, .3);
   cursor: pointer;
+  color: #fff;
+  transition: all .3s;
+
+}
+.profile__btn:focus {
+  background-color: rgb(206, 98, 98);
 
 }
 .profile__btn:hover {
-  background-color: rgb(0, 162, 255);
+  background-color: rgb(73, 73, 73);
   color: #fff;
 }
 .profile__btn:last-child {

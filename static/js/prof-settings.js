@@ -1,6 +1,8 @@
-const formImg = document.querySelector('.registration__img');
-const img = document.getElementsByClassName('registration__image')[0];
-const formInput = document.getElementById('registration__file');
+
+const img = document.getElementsByClassName('psf__img')[0];
+const image = document.getElementById('psf__image');
+const formInput = document.getElementById('profile-settings__avatar');
+
 img.addEventListener('click', () => {
   console.log('click')
   formInput.click()
@@ -15,7 +17,7 @@ function previewFile() {
   var reader  = new FileReader();
 
   reader.onloadend = function () {
-    img.src = reader.result;
+    image.src = reader.result;
   }
 
   if (file) {
