@@ -2,6 +2,9 @@
   font-size: 15px;
   
 }
+.join__block {
+  margin-bottom: 100px;
+}
 
 .join__search-block {
   display: flex;
@@ -83,8 +86,8 @@ button:hover {
   justify-content: space-between;
   border: 1px solid black;
   padding: 20px;
-  border-radius: 10px;
-  background-color: rgb(120, 206, 221);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0,0.3);
+  background-color: #3b3a3a;
   margin-bottom: 20px;
 }
 .join__card:last-child {
@@ -118,7 +121,8 @@ button:hover {
 .join__creator-head {
   display: flex;
   flex-direction: column;
-  
+  justify-content: space-between;
+  align-items: flex-end;
 }
 .join__img {
   max-width: 40px;
@@ -143,7 +147,8 @@ button:hover {
 }
 .join__creator-body {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+
 }
 
 .join__creator-body div {
@@ -156,6 +161,10 @@ button:hover {
   font-size: 14px;
   color: #444;
   font-weight: 700;
+  margin-right: 10px;
+}
+.join__creator-body div:last-child {
+  margin-right: 0;
 }
 
 .join__creator-body div:hover {

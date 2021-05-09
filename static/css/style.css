@@ -141,10 +141,10 @@ header {
 }
 
 footer {
+ 
   position: absolute;
   left: 0;
   bottom: 0;
-  
   padding: 20px;
   padding-bottom: 0;
 width: 100%;
