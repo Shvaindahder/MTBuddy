@@ -48,7 +48,7 @@ from models.user import User
 @bp.route("/index")
 def auth_page():
     if current_user.is_authenticated:
-        return redirect(url_for("main.index"))
+        return redirect(url_for("main.profile"))
     login_form = LoginForm()
     registration_form = RegistrationForm()
     context = {
