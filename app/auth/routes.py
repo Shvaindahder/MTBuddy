@@ -1,4 +1,4 @@
-from flask import redirect, url_for, request, render_template
+from flask import redirect, url_for, request, render_template, flash
 from flask_login import login_user, logout_user, current_user, login_required
 
 from app import db
@@ -64,20 +64,20 @@ def auth_page():
 @bp.route("/registration", methods=["POST"])
 def registration():
     form = RegistrationForm()
-    print("REGISTRATION FORM VALIDATES ON SUBMIT")
-        
+    
+
     user = User(form)
     user.set_password(form.password.data)
     
     if form.avatar.data is not None:
-        print(form.avatar)
         filename = load_media(form.avatar.data)
         user.avatar = filename
 
     db.session.add(user)
     db.session.commit()
-    print("New data")
     
+    flash("Registration success.")
+
     return redirect(url_for("auth.auth_page"))
 
 
@@ -85,19 +85,18 @@ def registration():
 @bp.route("/login", methods=["POST"])
 def login():
     form = LoginForm()
-    print("LOGIN FORM VALIDATES ON SUBMIT")
     user = User.query.filter_by(email=form.email.data).first()
     if user is None:
+        flash("Invaild email. Try again")
         return redirect(url_for("auth.auth_page"))
     if user.check_password(form.password.data):
-        print("Password is correct")
         login_user(user)
         next_page = request.args.get("next")
 
         if not next_page:
             next_page = url_for("main.profile")
         return redirect(next_page)
-    print("Password isn't correct")
+    flash("Password isn't correct")
     return redirect(url_for("auth.auth_page"))
 
 
@@ -105,7 +104,7 @@ def login():
 @bp.route("/logout")
 def logout():
     logout_user()
-    print("User logout")
+    flash("User logout")
     return redirect(url_for("auth.auth_page"))
 
 

@@ -143,6 +143,15 @@ def get_shops():
     data = json.loads(request.data)
     print(data["region"])
     region = Regions.query.filter_by(region=data["region"]).first()
-    print("Region: ", region)
     print("Region.shops: ", region.shops)
-    return jsonify({"status": "success"})
+    shops = list()
+
+    for shop in list(region.shops):
+        shops.append({
+            "name"  : shop.name,
+            "url"   : shop.shop_url,
+            "region": Regions.query.get(shop.region_id).region
+        })
+
+    print(shops)
+    return jsonify({"status": "success", "shops": shops})
