@@ -10,7 +10,7 @@ from config import Config
 
 
 db = SQLAlchemy()
-migrate = Migrate()
+migrate = Migrate(render_as_batch=True)
 login = LoginManager()
 login.login_view = "auth.auth_page"
 cors = CORS()

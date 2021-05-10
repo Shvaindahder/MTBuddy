@@ -34,7 +34,7 @@
                         <li class="header__sign"><a href="">Sign up</a></li>
                         <li class="header__log"><a href="">Log in</a></li>
                 {% else %}
-                        <li><a href="">Rent a bike</a></li>
+                        <li><a href="{{ url_for('meeting.bike_rent') }}">Rent a bike</a></li>
                         <li><a href="{{ url_for('main.profile_settings') }}">Profile settings</a></li>
                         <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                 {% endif %}
@@ -44,6 +44,15 @@
         </div>
         </header>
     <main>
+      <div class="container-alert">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+      </div>
       {% block content %}
 
       {% endblock %}

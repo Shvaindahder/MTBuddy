@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block css_links %}
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div id="shop-search">
+            <div id="city-search">
+                <select name="city" id="select-city">
+                    {% for city in cities %}
+                        <option value="{{ city.city }}">{{ city.city }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="region-search">
+                <select name="region" id="select-region">
+
+                </select>
+            </div>
+            <div id="search-shops-btn">BUTTON</div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    let selectCity = document.getElementById("select-city");
+    selectCity.onchange = () => {
+        let city = selectCity.value;
+        let regions;
+        let selectRegion = document.getElementById("select-region");
+        selectRegion.innerHTML = "";
+        let option;
+        {% for city in cities %} 
+            if ("{{ city.city }}" === city) {
+                {% for region in city.regions %}
+                    option = document.createElement("option");
+                    option.innerHTML = "{{region.region}}";
+                    option.value = "{{region.region}}";
+                    selectRegion.appendChild(option);
+                {% endfor %}
+            }
+        {% endfor %}
+        console.log(regions)
+    }
+</script>
+
+<script>
+    let button = document.getElementById("search-shops-btn");
+    button.onclick = () => {
+        fetch("{{ url_for('meeting.get_shops') }}", {
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify({
+                region: document.getElementById("select-region").value
+            })
+        })
+    }
+</script>
+{% endblock %}
