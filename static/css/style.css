@@ -92,7 +92,12 @@ header {
   visibility: visible;
 }
 
-
+.non {
+  display: none;
+}
+.pop__cont {
+  text-align: center;
+}
 
 .popup__body, .log__popup__body {
   min-height: 100%;
@@ -120,6 +125,7 @@ header {
 }
 .content__text {
   text-align: center;
+  margin-bottom: 200px;
 }
 .content__title {
   font-size: 30px;
@@ -141,16 +147,17 @@ header {
 }
 
 footer {
- 
+/*  
   position: absolute;
   left: 0;
-  bottom: 0;
-  padding: 20px;
+  bottom: 0; */
+  
   padding-bottom: 0;
 width: 100%;
 background-color: rgba(0, 0, 0, 0.8);
 
 }
+
 .footer__block {
   display: flex;
   justify-content: center;

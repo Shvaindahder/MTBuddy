@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/empty.css">
+  
+  <title>title</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="wrapper">
+        <header>
+        <div class="container header__container">
+            <div class="header__row">
+            <div class="header__logo">
+                <!-- <a href="{% if current_user.is_authenticated %} {{ url_for('main.profile') }} {% else %} {{ url_for('auth.auth_page') }} {% endif %}">LOGO</a> -->
+                <!-- <img src='{{url_for ("static", filename="img/logo.png")}}' alt=""> -->
+            </div>
+    
+            <!-- <div class="header__list">
+                <ul>
+                <li><a href="{{ url_for('main.about_us') }}">About us</a></li>
+                {% if not current_user.is_authenticated %}
+                        <li class="header__sign"><a href="">Sign up</a></li>
+                        <li class="header__log"><a href="">Log in</a></li>
+                {% else %}
+                        <li><a href="">Rent a bike</a></li>
+                        <li><a href="{{ url_for('main.profile_settings') }}">Profile settings</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                {% endif %}
+                </ul>
+            </div> -->
+            </div>
+        </div>
+        </header>
+    <main>
+      <div class="container-alert">
+          <div class='alert'>
+              <span>blablabla</span>
+          </div>
+      </div>
+      <div class="container">
+          <div class="empty__block">
+            <h3>Empty value!</h3>
+          </div>
+      </div>
+    </main>

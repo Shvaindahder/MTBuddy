@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 
 from flask import redirect, render_template, url_for, request, jsonify
@@ -67,15 +68,18 @@ def join_meeting():
 
 @bp.route("/join", methods=["POST"])
 def join():
-    meeting_id = request.args.get("meeting_id", None)
+    meeting_id = int(json.loads(request.data)["meeting_id"])
     if meeting_id is None:
         return jsonify({"status": "failed"})
     meeting = Meeting.query.get(meeting_id)
+    if meeting in current_user.participations:
+        return jsonify({"status": "failed"})
     if current_user.skill_level >= meeting.min_skill:
         current_user.participations.append(Meeting.query.get(meeting_id))
         db.session.commit()
+        print(meeting in current_user.participations)
         return jsonify({"status": "success"})
-    return jsonify({"status": "failed"})
+    return jsonify({"status": "failed", "message": f"You're skill level is lower than {meeting.min_skill}"})
 
 
 @login_required
@@ -84,7 +88,8 @@ def activities():
     meetings = sorted(current_user.participations, key=lambda x: x.date_time, reverse=True)
     context = {
         "title": "Activities",
-        "meetings": meetings
+        "meetings": meetings,
+        "now": datetime.utcnow()
     }
     return render_template("meeting/activities.html", **context)
 
@@ -92,19 +97,19 @@ def activities():
 @login_required
 @bp.route("cancel-paricipition", methods=["POST"])
 def cancel_participition():
-    meeting_id = request.args.get("meeting_id", None)
+    meeting_id = int(json.loads(request.data).get("meeting_id", None))
     if meeting_id is None:
         return jsonify(
-            {"status": "failed", "message": "No miting_id arg in request."}
+            {"status": "failed", "message": "No meeting_id arg in request."}
         )
 
     participations_count = len(current_user.participations)
     current_user.participations = list(filter(lambda x: x.id != meeting_id, current_user.participations))
+    db.session.commit()
     if len(current_user.participations) == participations_count:
         return jsonify(
             {"status": "failed", "message": "You are not a participant in the meeting {meeting_id}"}
         )
-    db.session.commit()
     return jsonify({"status": "success"})
 
     

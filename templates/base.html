@@ -24,7 +24,7 @@
             <div class="header__row">
             <div class="header__logo">
                 <!-- <a href="{% if current_user.is_authenticated %} {{ url_for('main.profile') }} {% else %} {{ url_for('auth.auth_page') }} {% endif %}">LOGO</a> -->
-                <img src='{{url_for ("static", filename="img/logo.png")}}' alt="">
+                <img src='{{url_for ("static", filename="img/logo.png")}}' alt="" id="logo-img">
             </div>
     
             <div class="header__list">
@@ -49,7 +49,7 @@
       {% endblock %}
     </main>
     <footer class="footer">
-      <div class="container">
+      <div class="container footer__container">
         <div class="footer__block">
           <div class="footer__icons">
 
@@ -214,5 +214,16 @@
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
   <script src="{{ url_for('static', filename='js/form.js') }}"></script>
   {% endif %}
+  <script>
+    let logo = document.getElementById("logo-img");
+    {% if current_user.is_authenticated %}
+    let redirect_dir = "{{ url_for('main.profile') }}";
+    {% else %}
+    let redirect_dir = "{{ url_for('auth.auth_page') }}";
+    {% endif %}
+    logo.onclick = () => {
+      location.href = redirect_dir;
+    }
+  </script>
 </body>
 </html>

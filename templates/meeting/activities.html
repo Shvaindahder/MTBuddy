@@ -10,7 +10,7 @@
 <div class="container">
 <div class="join__results results-card">
     {% for meeting in meetings %}
-    <div class="join__card">
+    <div class="join__card {% if now < meeting.date_time %} not-over {% endif %} ">
     <div class="join__desc">
         <span>Title: <span>{{ meeting.title }}</span></span>
         <span>When: <span>{{ meeting.date_time }}</span></span>
@@ -32,8 +32,8 @@
             </div>
         </div>
         <div class="join__creator-body">
-            <div class="join__details">See details</div>
-                <div class="join__join">Join</div>
+            <div class="join__details" id="{{ meeting.id }}">See details</div>
+                <div class="join__join join__cancel" id="{{ meeting.id }}">Cancel</div>
             </div>
         </div>
     </div>
@@ -42,3 +42,74 @@
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+<script>
+    const buttons = document.getElementsByClassName('join__join');
+    
+    for(let i = 0; i < buttons.length; i++) {
+
+        let meetingId = buttons[i].id;
+        buttons[i].addEventListener('click', () => {
+            if (!buttons[i].classList.contains("inactive-btn")) {
+                 fetch('{{ url_for("meeting.cancel_participition") }}', {
+                     method: 'POST',
+                     mode: 'cors',
+                     body: JSON.stringify({ meeting_id: meetingId})
+                 })
+                 .then(data => data.json())
+                 .then(data => {
+                     if(data.status === 'success') {
+                         buttons[i].classList.add('inactive-btn')
+                         buttons[i].parentElement.parentElement.parentElement.style.display = 'none'
+                     }
+                     console.log(data)
+                 })
+            }
+        })
+    }
+
+
+ </script>
+ <script>
+    let detail_btns = document.getElementsByClassName("join__details");
+    for (let detail_btn of detail_btns) {
+        detail_btn.onclick = () => {
+            console.log(detail_btn.id)
+            createModal(detail_btn.id)
+        }
+    }
+
+    function createModal(meeting_id) {
+        {% for meeting in meetings %}
+        if (meeting_id == {{ meeting.id }}) {
+            const modal = document.createElement('div');
+            modal.innerHTML = `
+            <div id="popup" class="sign-in__popup open">
+                <div class="popup__body">
+                    <div id='popup__content' class="pop__cont popup__content content__open">
+                    <a class="popup__close">x</a>
+                    <h2>{{meeting.title}}</h2>
+                    {% if meeting.description %}
+                        <p>{{meeting.description}}</p>
+                    {% else %}
+                        <p>No description.</p>
+                    {% endif %}
+                    <p>Creator: {{meeting.creator.username}}</p>
+                    <p>Date: {{meeting.date_time.date()}}</p>
+                    </div>
+                </div>
+                </div>
+            `
+            
+            modal.addEventListener('click', () => {
+                modal.classList.add('non')
+            })
+           
+            document.body.appendChild(modal)
+        }
+        {% endfor %}
+
+    }
+</script>
+ {% endblock %}
