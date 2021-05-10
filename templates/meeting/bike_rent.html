@@ -3,26 +3,34 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block css_links %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/bike.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 
 {% endblock %}
-
 
 {% block content %}
     <div class="container">
         <div id="shop-search">
             <div id="city-search">
-                <select name="city" id="select-city">
+
+                <select class=" sel f_select" name="city" id="select-city">
+                    <option value="" selected disabled hidden>Choose here</option>
                     {% for city in cities %}
+                    
                         <option value="{{ city.city }}">{{ city.city }}</option>
                     {% endfor %}
                 </select>
             </div>
             <div id="region-search">
-                <select name="region" id="select-region">
 
+                <select class="sel s_select" name="region" id="select-region">
+                    
                 </select>
             </div>
             <div id="search-shops-btn">BUTTON</div>
+        </div>
+        <div class="shop__cards">
+
         </div>
     </div>
 {% endblock %}
@@ -60,7 +68,11 @@
             body: JSON.stringify({
                 region: document.getElementById("select-region").value
             })
-        })
+        }).then(data => data.json())
+            .then(data => console.log(data))
     }
+</script>
+<script>
+
 </script>
 {% endblock %}
