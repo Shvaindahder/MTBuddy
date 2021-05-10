@@ -29,7 +29,7 @@
             </div>
             <div id="search-shops-btn">BUTTON</div>
         </div>
-        <div class="shop__cards">
+        <div id="shop__cards">
 
         </div>
     </div>
@@ -39,6 +39,7 @@
 {% block scripts %}
 <script>
     let selectCity = document.getElementById("select-city");
+    let shopCards = document.getElementById('shop__cards');
     selectCity.onchange = () => {
         let city = selectCity.value;
         let regions;
@@ -62,6 +63,8 @@
 <script>
     let button = document.getElementById("search-shops-btn");
     button.onclick = () => {
+        const shops = document.createElement('div');
+        shopCards.innerHTML = ''
         fetch("{{ url_for('meeting.get_shops') }}", {
             method: "POST",
             mode: "cors",
@@ -69,7 +72,21 @@
                 region: document.getElementById("select-region").value
             })
         }).then(data => data.json())
-            .then(data => console.log(data))
+            .then(data => {
+                
+                data.shops.map(shop => (
+                    shops.innerHTML = `
+                    <div class='shop__card'>
+                        <p>Name: ${shop.name}</p>
+                        <p>Region: ${shop.region}</p>
+                        <p>URL: ${shop.url}</p>
+                        </div>
+                `
+                ))
+                
+                console.log(data)
+                shopCards.appendChild(shops)
+            })
     }
 </script>
 <script>
