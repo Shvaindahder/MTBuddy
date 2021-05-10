@@ -4,26 +4,35 @@ Arco della Pace
 Bande Nere
 Bicocca
 Bisceglie
-Cenisio,Sarpi,Isola
+Cenisio
+Sarpi
+Isola
 Centrale
 Centro
 Cimiano
-Citta Studi, Susa
-City Life,Fiera
+Citta Studi
+Susa
+City Life
+Fiera
 Corvetto
-Famagosta,Barona
+Famagosta
+Barona
 Forlanini
-Gariabaldi,Moscova
-Genova,Ticinese
+Gariabaldi
+Moscova
+Genova
+Ticinese
 Maggiolina
 Napoli
 Navigli
-Nolo, Pasteur
+Nolo
+Pasteur
 Ponte Lambro
 Porta Romana
 Porta Venezia
 Porta Vittora
-Precotto,Turro
+Precotto
+Turro
 Quadronno
 Ripamonti
 San Siro

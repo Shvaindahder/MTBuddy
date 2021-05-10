@@ -5,7 +5,9 @@ Aurora
 Barrieira Milano
 Borgata Vittoria
 Campidoglio
-Centro,Giardini Reali,Repubblica
+Centro
+Giardini Reali
+Repubblica
 Cit Turin
 Crocetta
 Falchera Villaretto
