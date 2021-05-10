@@ -13,6 +13,7 @@
 
   {% endblock %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/empty.css') }}">
   
   <title>{% block title %}{% endblock %}</title>
 </head>
@@ -48,7 +49,7 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
+            <div class="alert" role="alert"><span id="flash-message">{{ message }}</span></div>
             {% endfor %}
         {% endif %}
         {% endwith %}

@@ -75,7 +75,7 @@ def join():
         return jsonify({"status": "failed"})
     meeting = Meeting.query.get(meeting_id)
     if meeting in current_user.participations:
-        return jsonify({"status": "failed"})
+        return jsonify({"status": "failed", "message": "You're already in the competition"})
     if current_user.skill_level >= meeting.min_skill:
         current_user.participations.append(Meeting.query.get(meeting_id))
         db.session.commit()

@@ -117,6 +117,17 @@
                 .then(data => {
                     if(data.status === 'success') {
                         buttons[i].classList.add('inactive-btn')
+                    } else if (data.status === "failed") {
+                        //console.log(document.getElementById("flash-message"))
+                        //document.getElementById("flash-message").innerHTML = data.message;
+                        let div = document.createElement("div")
+                        div.classList.add("alert")
+                        div.innerHTML = `<span id="flash-message">${data.message}</span>`
+                        document.getElementsByClassName("container-alert")[0].appendChild(div)
+                        window.onclick = () => {
+                            document.getElementsByClassName("container-alert")[0].innerHTML = "";
+                            window.onclick = null;
+                        }
                     }
                     console.log(data)
                 })
