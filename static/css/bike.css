@@ -46,4 +46,30 @@
     border: 1px solid #000;
     color: #000;
     cursor: pointer;
+
+  }
+
+  #shop__cards {
+    display: flex;
+    margin: 0 -5px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    justify-content: space-between;
+  }
+  .shop__card p {
+    font-size: 20px;
+    color: #fff;
+  }
+  .shop__card {
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 30px 50px;
+    text-align: center;
+    border: 1px solid #000;
+    box-shadow: 1px 4px 4px rgba(0, 0, ,0 0.3);
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .shop__card:last-child {
+    margin-bottom: 100px;
   }
